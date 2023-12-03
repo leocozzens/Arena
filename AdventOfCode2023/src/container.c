@@ -6,7 +6,7 @@
 // Local headers
 #include <container.h>
 
-#define GENERAL_ERR     "ERROR READING DATA - %s"
+#define GENERAL_ERR     "ERROR READING DATA - %s\n"
 #define EVAL_ERR        "EVALUATION ERROR - %s\nERROR CODE - %d\n"
 #define UNLISTED_ERR    "UNLISTED ERROR"
 #define UNLISTED_VAL    "VALUE"
