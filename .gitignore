@@ -1,0 +1,7 @@
+# Binaries
+*.bin
+*.obj
+bin/
+obj/
+# Editor settings
+.vscode
