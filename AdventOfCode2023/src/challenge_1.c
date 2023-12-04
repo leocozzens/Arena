@@ -4,6 +4,7 @@
 #include <errno.h>
 // Local headers
 #include <container.h>
+#include <utils.h>
 
 ReturnData eval(char *data, long fSize) {
     char *lineFeed;
