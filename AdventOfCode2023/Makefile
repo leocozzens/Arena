@@ -23,7 +23,7 @@ CONTAINER = $(OBJ)/container.o
 BIN = $(BINDIR)/$(BINNAME)
 NUM = n
 
-$(NUM)%: $(OBJ)/%.o $(CONTAINER)
+$(NUM)%: $(OBJ)/challenge_%.o $(CONTAINER)
 	$(CC) $(CFLAGS) $(IFLAGS) $^ -o $(BIN)
 	$(BIN) $(DATA)/$@.txt
 
