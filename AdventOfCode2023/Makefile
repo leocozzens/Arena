@@ -19,13 +19,13 @@ DATA = data
 BINDIR = bin
 PROJNAME = AoC23
 BINNAME = $(PROJNAME).$(EXEC)
-CONTAINER = $(OBJ)/container.o
+CONSTANTS = $(OBJ)/container.o $(OBJ)/utils.o
 BIN = $(BINDIR)/$(BINNAME)
 NUM = n
 
-$(NUM)%: $(OBJ)/challenge_%.o $(CONTAINER)
+$(NUM)%: $(OBJ)/challenge_%.o $(CONSTANTS)
 	$(CC) $(CFLAGS) $(IFLAGS) $^ -o $(BIN)
-	$(BIN) $(DATA)/$@.txt
+	$(BIN) $(DATA)/input_$*.txt
 
 $(OBJ)/%.o: $(SRC)/%.$(EXT) $(BINDIR)
 	$(CC) -c $(CFLAGS) $(IFLAGS) $< -o $@

@@ -4,6 +4,7 @@
 #include <string.h>
 // Local headers
 #include <container.h>
+#include <utils.h>
 
 #define EXIT_SUCCESS                0
 #define EXIT_FAILURE                1
@@ -37,7 +38,6 @@ Digit digitTable[] = {
 };
 
 static void reset_buff(char *buff, int *output);
-static int convert_num(char *str);
 static char match_num(char *target, long *iterator);
 
 ReturnData eval(char *data, long fSize) {
@@ -64,13 +64,6 @@ static void reset_buff(char *buff, int *output) {
         *output += convert_num(buff);
         memcpy(buff, EMPTY_VALS, VAL_SIZE);
     }
-}
-
-static int convert_num(char *str) {
-    int ret = 0;
-    while(*str != '\0')
-        ret = ret * 10 + *str++ - '0';
-    return ret;
 }
 
 static char match_num(char *target, long *iterator) {

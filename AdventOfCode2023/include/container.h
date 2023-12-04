@@ -8,11 +8,10 @@ typedef struct {
     int retCode;
 } ReturnData;
 
+#define EMPTY_DATA_WITH_TYPE(_type) { _type, NULL, 0, EXIT_SUCCESS }
+
 extern ReturnData EMPTY_DATA;
 
 ReturnData eval(char *data, long fSize);
-void set_linefeed(char *data);
-char *get_linefeed(void);
-void close_linefeed(void);
 
 #endif
