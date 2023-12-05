@@ -82,7 +82,6 @@ ReturnData eval(char *data, long fSize) {
             }
             lineFeed += skipCount - 1;
         }
-        printf("r:%d g:%d b:%d \n", mins[RED], mins[GREEN], mins[BLUE]);
         outData.output += mins[RED] * mins[GREEN] * mins[BLUE];
     }
 
