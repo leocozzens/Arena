@@ -11,8 +11,10 @@
 ReturnData eval(char *data, long fSize) {
     set_linefeed(data);
     char *lineFeed;
-    while((lineFeed = get_linefeed()) != NULL)
-        printf("%s\n", lineFeed);
+    while((lineFeed = get_linefeed()) != NULL) {
+        // Solve here
+    }
+    close_linefeed();
 
     ReturnData outData = { VALUE_TYPE, strerror(errno), 0, errno };
     return outData;
