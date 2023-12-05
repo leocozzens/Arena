@@ -15,10 +15,6 @@
 #define COLOR_ENTRY(_word)  { _word, S_LEN(_word) }
 #define VALUE_TYPE          "SUM OF ID'S"
 
-#define RED_MAX             12
-#define GREEN_MAX           13
-#define BLUE_MAX            14
-
 typedef enum {
     RED,
     GREEN,
@@ -45,16 +41,13 @@ static Color check_color(char *str);
 ReturnData eval(char *data, long fSize) {
     char *lineFeed;
     set_linefeed(data);
-
-    unsigned int pos = 0;
     char buffer[VAL_SIZE];
     ReturnData outData = EMPTY_DATA_WITH_TYPE(VALUE_TYPE);
     while((lineFeed = get_linefeed()) != NULL) {
-        pos++;
         lineFeed = strchr(lineFeed, ':');
         if(lineFeed == NULL) break;
 
-        bool possible = true;
+        int mins[3] = { 0, 0, 0 };
         while(lineFeed[1] != '\0') {
             while(!check_digit(*lineFeed)) lineFeed++;
             {
@@ -66,20 +59,20 @@ ReturnData eval(char *data, long fSize) {
             lineFeed++;
             Color currColor = check_color(lineFeed);
 
-            unsigned int max;
-            unsigned int skipCount;
+            int skipCount;
+            int readNum = convert_num(buffer);
             switch(currColor) {
                 case RED:
-                max = RED_MAX;
                 skipCount = colors[RED].size;
+                if(readNum > mins[RED]) mins[RED] = readNum;
                 break;
                 case GREEN:
-                max = GREEN_MAX;
                 skipCount = colors[GREEN].size;
+                if(readNum > mins[GREEN]) mins[GREEN] = readNum;
                 break;
                 case BLUE:
-                max = BLUE_MAX;
                 skipCount = colors[BLUE].size;
+                if(readNum > mins[BLUE]) mins[BLUE] = readNum;
                 break;
                 default:
                 errno = 0;
@@ -87,13 +80,10 @@ ReturnData eval(char *data, long fSize) {
                 outData.retCode = EXIT_FAILURE;
                 goto END;
             }
-            if(convert_num(buffer) > max) {
-                possible = false;
-                break;
-            }
             lineFeed += skipCount - 1;
         }
-        if(possible) outData.output += pos;
+        printf("r:%d g:%d b:%d \n", mins[RED], mins[GREEN], mins[BLUE]);
+        outData.output += mins[RED] * mins[GREEN] * mins[BLUE];
     }
 
     END:
