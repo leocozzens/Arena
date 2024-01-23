@@ -8,10 +8,11 @@
 
 #define BASE_LINESIZE   256
 
-GridInfo EMPTY_GRID = { NULL, NULL, 1 };
+GridInfo EMPTY_GRID = { NULL, NULL, 0 };
 
 GridInfo get_linegrid(char *data, long size) {
     GridInfo newGrid = EMPTY_GRID;
+    newGrid.height = 1;
     for(char *read = data; *read != '\0'; read++) {
         if(*read == '\r') size--;
         if(*read == '\n') newGrid.height++;
