@@ -4,11 +4,10 @@
 // Local headers
 #include <container.h>
 #include <utils.h>
-
 #define EXIT_SUCCESS        0
 #define EXIT_FAILURE        1
 
-#define VALUE_TYPE          "SUM OF ENGINE PART NUMBERS"
+#define VALUE_TYPE          "OBJECTS"
 
 ReturnData eval(char *data, long fSize) {
     GridInfo lineData = get_linegrid(data, fSize);
@@ -22,5 +21,7 @@ ReturnData eval(char *data, long fSize) {
         printf("%s\n", lineData.grid[i]);
     }
     free_linegrid(&lineData);
+    
+    // Your ReturnData.output should contain your challenge answer
     return outData;
 }

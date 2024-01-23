@@ -1,6 +1,5 @@
 // C standard headers
 #include <stdlib.h>
-#include <stdbool.h>
 #include <string.h>
 #include <errno.h>
 // Local headers

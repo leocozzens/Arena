@@ -92,6 +92,7 @@ static int determine_digits(int target) {
 
 static void print_output(const char *type, int output) {
     int typeLen = strlen(type);
+    printf("\n");
     print_char_len('-', typeLen);
     printf("\n%s\n", type);
 
